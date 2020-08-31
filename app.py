@@ -13,8 +13,8 @@ log_name = 'gke-application-logs'
 logger = logging_client.logger(log_name)
 
 def callback(message):
-    logger.log_text(message)
-    print("Received message: {}".format(message))
+    logger.log_text(message.data)
+    print("Received message: {}".format(message.data))
     message.ack()
 
 @app.route("/")
