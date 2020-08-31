@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: kubernetes-flaskapp
+  name: gke-pubsub-flaskapp
 spec:
   type: LoadBalancer
   selector:
-    app: kubernetes-flaskapp
+    app: gke-pubsub-flaskapp
   ports:
   - name: http
     port: 80
