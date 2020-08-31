@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flaskapp
-        image: anm237/gketraining:v1
+        image: dhiraj6898/gke-flaskapp:v1
         resources:
           limits:
             memory: "128Mi"
