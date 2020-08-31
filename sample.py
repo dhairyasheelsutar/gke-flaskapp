@@ -11,8 +11,9 @@ log_name = 'gke-application-logs'
 logger = logging_client.logger(log_name)
 
 def callback(message):
-    logger.log_text(message.data)
-    print("Received message: {}".format(message.data))
+    message_data = message.data.decode("utf-8")
+    logger.log_text(message_data)
+    print("Received message: {}".format(message))
     message.ack()
 
 streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
