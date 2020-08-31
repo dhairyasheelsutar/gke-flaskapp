@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gke-flaskapp
+spec:
+  selector:
+    matchLabels:
+      app: gke-flaskapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gke-flaskapp
+    spec:
+      containers:
+      - name: flaskapp
+        image: anm237/gketraining:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 4000
