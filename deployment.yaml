@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gke-flaskapp
+  name: kubernetes-flaskapp
 spec:
   selector:
     matchLabels:
-      app: gke-flaskapp
+      app: kubernetes-flaskapp
   replicas: 3
   template:
     metadata:
       labels:
-        app: gke-flaskapp
+        app: kubernetes-flaskapp
     spec:
       containers:
       - name: flaskapp
-        image: dhiraj6898/gke-flaskapp:v1
+        image: dhiraj6898/kubernetes-flaskapp:v1
         resources:
           limits:
             memory: "128Mi"
