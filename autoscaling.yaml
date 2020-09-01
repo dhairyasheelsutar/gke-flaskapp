@@ -10,7 +10,7 @@ spec:
       metricName: pubsub.googleapis.com|subscription|num_undelivered_messages
       metricSelector:
         matchLabels:
-          resource.labels.subscription_id: echo-read
+          resource.labels.subscription_id: subscription-gke-topic
       targetAverageValue: "2"
     type: External
   scaleTargetRef:
