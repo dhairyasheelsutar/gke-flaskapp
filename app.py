@@ -1,17 +1,29 @@
 import base64
-from google.cloud import logging
+from google.cloud import logging_v2
 from google.cloud import pubsub
 
-logging_client = logging.Client()
+client = logging_v2.LoggingServiceV2Client()
+PROJECT_ID = "training-freshers"
+TOPIC = "topic-gke-cluster"
+SUB = "subscription-gke-topic"
 
-PROJECT_ID = 'training-freshers'
-TOPIC = 'topic-gke-cluster'
-SUB = 'subscription-gke-topic'
-logger = logging_client.logger('projects/'+ PROJECT_ID +'/logs/gke_python_logger')  
+resource = {
+    "type": "global",
+    "labels": {
+        "project_id": PROJECT_ID,
+    }
+}
+
+e = {
+    "log_name": "projects/"+ PROJECT_ID +"/logs/test-logging",
+    "resource": resource
+}
+
 subscriber = pubsub.SubscriberClient()
 
 def callback(message):
-    logger.log_struct({"message": message.data.decode("utf-8")})
+    e["text_payload"] = message.data.decode("utf-8")
+    client.write_log_entries([e])
     print(message.data)
     message.ack()
 
