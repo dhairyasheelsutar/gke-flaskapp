@@ -22,7 +22,7 @@ e = {
 subscriber = pubsub.SubscriberClient()
 
 def callback(message):
-    e["text_payload"] = message.data.decode("utf-8")
+    e["text_payload"] = "Message from Pubsub: " + message.data.decode("utf-8")
     client.write_log_entries([e])
     print(message.data)
     message.ack()
