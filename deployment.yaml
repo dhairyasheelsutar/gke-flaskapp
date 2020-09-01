@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gke-pubsub-app
+  name: gke-pubsub
 spec:
   selector:
     matchLabels:
-      app: gke-pubsub-app
+      app: gke-pubsub
   replicas: 3
   template:
     metadata:
       labels:
-        app: gke-pubsub-app
+        app: gke-pubsub
     spec:
       containers:
       - name: flaskapp
-        image: dhiraj6898/gke-pubsub-app:v1
+        image: dhiraj6898/gke-pubsub:v1
         ports:
         - containerPort: 5000
