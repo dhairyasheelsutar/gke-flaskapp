@@ -3,11 +3,11 @@ from google.cloud import logging
 from google.cloud import pubsub
 
 logging_client = logging.Client()
-logger = logging_client.logger('gke_python_logger')  
 
 PROJECT_ID = 'training-freshers'
 TOPIC = 'topic-gke-cluster'
 SUB = 'subscription-gke-topic'
+logger = logging_client.logger('projects/'+ PROJECT_ID +'/logs/gke_python_logger')  
 subscriber = pubsub.SubscriberClient()
 
 def callback(message):
