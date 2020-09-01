@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gke-pubsub-flaskapp
+  name: gke-pubsub-app
 spec:
   selector:
     matchLabels:
@@ -15,9 +15,5 @@ spec:
       containers:
       - name: flaskapp
         image: dhiraj6898/gke-pubsub-app:v1
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "250m"
         ports:
         - containerPort: 5000
