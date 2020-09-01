@@ -17,6 +17,6 @@ subscription_path = subscriber.subscription_path(PROJECT_ID, SUB)
 future = subscriber.subscribe(subscription_path, callback)
 with subscriber:
     try:
-        future.result(timeout=10)
+        future.result()
     except TimeoutError:
         future.cancel()
