@@ -15,7 +15,8 @@ def callback(message):
 
 subscription_path = subscriber.subscription_path(PROJECT_ID, SUB)
 future = subscriber.subscribe(subscription_path, callback)
-try:
-    future.result()
-except:
-    future.cancel()
+with subscriber:
+    try:
+        future.result(timeout=10)
+    except TimeoutError:
+        future.cancel()
