@@ -5,16 +5,16 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: gke-pubsub-flaskapp
+      app: gke-pubsub-app
   replicas: 3
   template:
     metadata:
       labels:
-        app: gke-pubsub-flaskapp
+        app: gke-pubsub-app
     spec:
       containers:
       - name: flaskapp
-        image: dhiraj6898/gke-pubsub-flaskapp:v1
+        image: dhiraj6898/gke-pubsub-app:v1
         resources:
           limits:
             memory: "128Mi"
